@@ -8,7 +8,7 @@ Summary(pl):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
 Version:	2.0.0
 %define	_pre	beta3
-Release:	0.%{_pre}.1
+Release:	0.%{_pre}.2
 Epoch:		1
 License:	BSD style
 Group:		Development/Languages/PHP
@@ -41,7 +41,7 @@ Ta klasa ma w PEAR status: %{_status}.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/{Driver/{Datatype,Manager,Native,Reverse},Tools}
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/{Driver/{Datatype,Manager,Native,Reverse},Tools/Manager}
 
 install %{_pearname}-%{version}%{_pre}/*.php $RPM_BUILD_ROOT%{php_pear_dir}/
 install %{_pearname}-%{version}%{_pre}/%{_class}/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/
@@ -51,6 +51,7 @@ install %{_pearname}-%{version}%{_pre}/%{_class}/Driver/Manager/*.php $RPM_BUILD
 install %{_pearname}-%{version}%{_pre}/%{_class}/Driver/Native/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Driver/Native/
 install %{_pearname}-%{version}%{_pre}/%{_class}/Driver/Reverse/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Driver/Reverse/
 install %{_pearname}-%{version}%{_pre}/%{_class}/Tools/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Tools/
+install %{_pearname}-%{version}%{_pre}/%{_class}/Tools/Manager/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Tools/Manager/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
