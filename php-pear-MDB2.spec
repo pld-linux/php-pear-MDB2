@@ -26,7 +26,7 @@ API. It also provides methods for DB portability and DB feature
 emulation. Most notably it features a DB independent XML-Schema
 manager.
 
-This class has in PEAR status: %{_status}.
+In PEAR status of this package is: %{_status}.
 
 %description -l pl
 MDB2 to po³±czenie PEAR DB i Metabases, które daje ujednolicone API do
