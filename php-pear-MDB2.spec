@@ -8,7 +8,7 @@ Summary(pl):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
 Version:	2.0.0
 %define	_pre	beta2
-Release:	0.%{_pre}
+Release:	0.%{_pre}.1
 Epoch:		1
 License:	BSD style
 Group:		Development/Languages/PHP
