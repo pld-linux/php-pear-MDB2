@@ -1,19 +1,19 @@
 %include	/usr/lib/rpm/macros.php
 %define		_class		MDB2
 %define		_pearname	%{_class}
-%define		_status		alpha
+%define		_status		beta
 
 Summary:	%{_pearname} - unified database API
 Summary(pl):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
 Version:	2.0.0
-%define	_pre	alpha1
+%define	_pre	beta1
 Release:	0.%{_pre}
 Epoch:		1
 License:	BSD style
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{_pre}.tgz
-# Source0-md5:	9ac6cf3ab3b3e53e18db7877fadde181
+# Source0-md5:	bf73174d66d5980b3177ad8a34812e76
 URL:		http://pear.php.net/package/MDB2/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 Requires:	php-pear
