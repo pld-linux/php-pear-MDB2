@@ -7,13 +7,13 @@ Summary:	%{_pearname} - unified database API
 Summary(pl):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
 Version:	2.0.0
-%define	_pre	beta2
+%define	_pre	beta3
 Release:	0.%{_pre}.1
 Epoch:		1
 License:	BSD style
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{_pre}.tgz
-# Source0-md5:	202829a526d27207bc46823b3b5b8553
+# Source0-md5:	0718e2dd50d306a9852b1050698c7339
 URL:		http://pear.php.net/package/MDB2/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 Requires:	php-pear
