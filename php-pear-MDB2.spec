@@ -8,17 +8,21 @@ Summary(pl):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
 Version:	2.0.0
 %define	_pre	beta4
-Release:	0.%{_pre}.1
+%define	_rel	1.1
+Release:	0.%{_pre}.%{_rel}
 Epoch:		1
 License:	BSD style
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{_pre}.tgz
 # Source0-md5:	95aee608b6c980b5c99ebbf7425c6aa8
 URL:		http://pear.php.net/package/MDB2/
-BuildRequires:	rpm-php-pearprov >= 4.0.2-98
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-pear
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# (probably) included in tests
+%define		_noautoreq 'pear(Console_TestListener.php)' 'pear(HTML_TestListener.php)' 'pear(XML/DTD/XmlValidator.php)' 'pear(testUtils.php)' 'pear(test_setup.php)'
 
 %description
 MDB2 is a merge of PEAR's DB and Metabases that provides a unified DB
@@ -36,28 +40,37 @@ danych zarz±dca schematów XML.
 
 Ta klasa ma w PEAR status: %{_status}.
 
+%package tests
+Summary:	Tests for PEAR::%{_pearname}
+Summary(pl):	Testy dla PEAR::%{_pearname}
+Group:		Development
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tests
+Tests for PEAR::%{_pearname}.
+
+%description tests -l pl
+Testy dla PEAR::%{_pearname}.
+
 %prep
-%setup -q -c
+%pear_package_setup
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/{Driver/{Datatype,Manager,Native,Reverse},Tools/Manager}
-
-install %{_pearname}-%{version}%{_pre}/*.php $RPM_BUILD_ROOT%{php_pear_dir}/
-install %{_pearname}-%{version}%{_pre}/%{_class}/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/
-install %{_pearname}-%{version}%{_pre}/%{_class}/Driver/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Driver/
-install %{_pearname}-%{version}%{_pre}/%{_class}/Driver/Datatype/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Driver/Datatype/
-install %{_pearname}-%{version}%{_pre}/%{_class}/Driver/Manager/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Driver/Manager/
-install %{_pearname}-%{version}%{_pre}/%{_class}/Driver/Native/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Driver/Native/
-install %{_pearname}-%{version}%{_pre}/%{_class}/Driver/Reverse/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Driver/Reverse/
-install %{_pearname}-%{version}%{_pre}/%{_class}/Tools/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Tools/
-install %{_pearname}-%{version}%{_pre}/%{_class}/Tools/Manager/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Tools/Manager/
+install -d $RPM_BUILD_ROOT%{php_pear_dir}
+%pear_package_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc %{_pearname}-%{version}%{_pre}/{docs/,tests/}
+%doc install.log
+%doc docs/%{_pearname}/docs/*
+%{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/*.php
 %{php_pear_dir}/%{_class}
+
+%files tests
+%defattr(644,root,root,755)
+%{php_pear_dir}/tests/*
