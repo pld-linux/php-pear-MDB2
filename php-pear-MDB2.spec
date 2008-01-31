@@ -6,7 +6,7 @@ Summary:	%{_pearname} - unified database API
 Summary(pl.UTF-8):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
 Version:	2.4.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	BSD style
 Group:		Development/Languages/PHP
