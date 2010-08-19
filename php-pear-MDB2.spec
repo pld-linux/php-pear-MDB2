@@ -1,17 +1,19 @@
 %include	/usr/lib/rpm/macros.php
 %define		_class		MDB2
 %define		_pearname	%{_class}
-%define		_status		stable
+%define		_status		beta
+%define		subver	b2
+%define		rel		1
 Summary:	%{_pearname} - unified database API
 Summary(pl.UTF-8):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
-Version:	2.4.1
-Release:	2
+Version:	2.5.0
+Release:	0.%{subver}.%{rel}
 Epoch:		1
 License:	BSD style
 Group:		Development/Languages/PHP
-Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	ca272056a3a4f1031a2b0e7f2e286a12
+Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
+# Source0-md5:	64698ba759bc696a16d4f17b92f65727
 URL:		http://pear.php.net/package/MDB2/
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -47,8 +49,8 @@ Summary:	Tests for PEAR::%{_pearname}
 Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-AutoReq:	no
 AutoProv:	no
+AutoReq:	no
 
 %description tests
 Tests for PEAR::%{_pearname}.
@@ -59,12 +61,15 @@ Testy dla PEAR::%{_pearname}.
 %prep
 %pear_package_setup
 
+mv docs/%{_pearname}/docs/examples .
+
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{php_pear_dir},%{_examplesdir}/%{name}-%{version}}
 install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/Driver/Native
 %pear_package_install
 
-rm -f $RPM_BUILD_ROOT/usr/share/pear/data/MDB2/LICENSE
+rm -f $RPM_BUILD_ROOT%{php_pear_dir}/data/MDB2/LICENSE
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,6 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/*.php
 %{php_pear_dir}/%{_class}
+
+%{_examplesdir}/%{name}-%{version}
 
 %files tests
 %defattr(644,root,root,755)
