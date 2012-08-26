@@ -2,7 +2,7 @@
 %define		_pearname	MDB2
 %define		_status		beta
 %define		subver	b3
-%define		rel		2
+%define		rel		3
 Summary:	%{_pearname} - unified database API
 Summary(pl.UTF-8):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
@@ -17,7 +17,7 @@ URL:		http://pear.php.net/package/MDB2/
 BuildRequires:	php-pear-PEAR >= 1:1.9.1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
-Requires:	php-common >= 3:4.3.0
+Requires:	php(core) >= 4.3.0
 Requires:	php-pear
 Requires:	php-pear-PEAR-core >= 1:1.3.6
 Requires:	php-pear-XML_Parser
