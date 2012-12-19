@@ -1,8 +1,8 @@
-%include	/usr/lib/rpm/macros.php
 %define		_pearname	MDB2
 %define		_status		beta
-%define		subver	b3
-%define		rel		3
+%define		subver	b5
+%define		rel		1
+%include	/usr/lib/rpm/macros.php
 Summary:	%{_pearname} - unified database API
 Summary(pl.UTF-8):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
@@ -12,11 +12,11 @@ Epoch:		1
 License:	BSD style
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
-# Source0-md5:	5a4333a18f331a5176010ad45f9617ea
+# Source0-md5:	1b895c079907fbb6097e391c8770539f
 URL:		http://pear.php.net/package/MDB2/
 BuildRequires:	php-pear-PEAR >= 1:1.9.1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
-BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	rpmbuild(macros) >= 1.654
 Requires:	php(core) >= 4.3.0
 Requires:	php-pear
 Requires:	php-pear-PEAR-core >= 1:1.3.6
@@ -24,9 +24,6 @@ Requires:	php-pear-XML_Parser
 Obsoletes:	php-pear-MDB2-tests
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-# (probably) included in tests
-%define		_noautoreq pear(Console_TestListener.php) pear(HTML_TestListener.php) pear(XML/DTD/XmlValidator.php) pear(testUtils.php) pear(test_setup.php)
 
 %description
 MDB2 is a merge of PEAR's DB and Metabases that provides a unified DB
