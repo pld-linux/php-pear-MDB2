@@ -2,7 +2,6 @@
 %define		_status		beta
 %define		subver	b5
 %define		rel		1
-%include	/usr/lib/rpm/macros.php
 Summary:	%{_pearname} - unified database API
 Summary(pl.UTF-8):	%{_pearname} - zunifikowane API baz danych
 Name:		php-pear-%{_pearname}
